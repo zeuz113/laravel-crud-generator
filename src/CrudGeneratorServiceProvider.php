@@ -18,7 +18,8 @@ class CrudGeneratorServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/views', 'crudgenerator');
 
         $this->publishes([
-	        __DIR__.'/Templates' => base_path('resources/templates'),
+            __DIR__.'/Templates' => base_path('resources/templates'),
+            __DIR__.'/views/layouts' => base_path('resources/views/layouts'),
 	    ]);
     }
 
