@@ -24,5 +24,8 @@
                 "CrudGenerator\\CrudGeneratorServiceProvider"
             ]
         }
-    }
+    },
+    "scripts": {
+        "post-package-update": "php artisan vendor:publish"
+     }
 }
