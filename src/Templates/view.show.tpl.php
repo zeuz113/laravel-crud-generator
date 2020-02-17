@@ -22,7 +22,7 @@
         <div class="form-group">
             <label for="[[i.name]]" class="col-sm-3 control-label">[[i.display]]</label>
             <div class="col-sm-6">
-                <input type="text" name="[[i.name]]" id="[[i.name]]" class="form-control" value="{{$model['[[i.name]]'] or ''}}" readonly="readonly">
+                <input type="text" name="[[i.name]]" id="[[i.name]]" class="form-control" value="{{isset($model) ? $model['[[i.name]]'] : ''}}" readonly="readonly">
             </div>
         </div>
         

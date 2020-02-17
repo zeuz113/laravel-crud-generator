@@ -53,7 +53,7 @@ class [[controller_name]]Controller extends Controller
     $len = $_GET['length'];
     $start = $_GET['start'];
 
-    $select = "SELECT *,1,2 ";
+    $select = "SELECT [[foreach:columns]]'[[i.name]]',[[endforeach]],1,2 ";
     $presql = " FROM [[prefix]][[tablename]] a ";
     if($_GET['search']['value']) {
       $presql .= " WHERE [[first_column_nonid]] LIKE '%".$_GET['search']['value']."%' ";
