@@ -48,7 +48,7 @@ php artisan make:crud all
 ```
 whole database with custom layout
 ```
-<b>php artisan make:crud all --master-layout=layouts.master </b>
+php artisan make:crud all --master-layout=layouts.master 
 ```
 Because sometimes you need boilerplate code only for view and controller, you can use an existing model with custom controller name
 ```
