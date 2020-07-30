@@ -21,6 +21,17 @@ CrudGenerator\CrudGeneratorServiceProvider::class,
 
 ![Preview](https://raw.githubusercontent.com/kEpEx/laravel-crud-generator/master/preview.gif)
 
+### Custom Templates
+
+The best power of this plugin relies on you making your own templates and generating the code the way you like
+
+Run this command:
+```
+php artisan vendor:publish
+```
+and you will have now in resources/templates/ the files you need to modify
+
+If you want to go back to the default, just delete them
 
 ### Usage
 
@@ -37,7 +48,7 @@ php artisan make:crud all
 ```
 whole database with custom layout
 ```
-php artisan make:crud all --master-layout=layouts.master 
+<b>php artisan make:crud all --master-layout=layouts.master </b>
 ```
 Because sometimes you need boilerplate code only for view and controller, you can use an existing model with custom controller name
 ```
@@ -47,16 +58,6 @@ For more options
 ```
 php artisan help make:crud
 ```
-### Custom Templates
 
-The best power of this plugin relies on you making your own templates and generating the code the way you like
-
-Run this command:
-```
-php artisan vendor:publish
-```
-and you will have now in resources/templates/ the files you need to modify
-
-If you want to go back to the default, just delete them
 
 Let me know if you have any questions or if you find this library useful at twitter @[kEpEx](https://twitter.com/kepex)
