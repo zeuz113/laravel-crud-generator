@@ -55,7 +55,7 @@ class CrudGeneratorCommand extends Command
                 list($key) = array_keys($p);
                 $tables[] = $p[$key]; 
             }
-            $this->info("List of tables: ".implode($tables, ","));
+            $this->info("List of tables: ".implode(",",$tables));
             
             foreach ($tables as $t) {
                 // Ignore tables with different prefix
