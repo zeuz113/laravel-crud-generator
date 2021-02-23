@@ -57,7 +57,7 @@ class CrudGeneratorCommand extends Command
             $this->info("List of tables: " . implode(",", $tables));
 
             foreach ($tables as $t) {
-                // Ignore tables with different prefix
+                // Ignore tables with different prefix && laravel core
                 if (!str_contains($t, "oauth_") && $t != "password_resets" && $t != "migrations" && $t != "failed_jobs") {
                     if ($prefix == '' || str_contains($t, $prefix)) {
                         $t = strtolower(substr($t, strlen($prefix)));

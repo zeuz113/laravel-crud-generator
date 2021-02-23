@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use [[appns]]Http\Requests;
 use [[appns]]Http\Controllers\Controller;
 
-use [[appns]][[model_uc]];
+use [[appns]]Models\[[model_uc]];
 
 use DB;
 
