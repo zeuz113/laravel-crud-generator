@@ -2,10 +2,9 @@
 
 namespace CrudGenerator\Console\Commands;
 
-use Illuminate\Container\Container;
-use Illuminate\Console\Command;
 use DB;
-use Artisan;
+use Illuminate\Console\Command;
+use Illuminate\Container\Container;
 
 class CrudGeneratorCommand extends Command
 {
@@ -48,48 +47,46 @@ class CrudGeneratorCommand extends Command
 
         $tocreate = [];
 
-        if($modelname == 'all') {
+        if ($modelname == 'all') {
             $pretables = json_decode(json_encode(DB::select("show tables")), true);
             $tables = [];
-            foreach($pretables as $p) { 
+            foreach ($pretables as $p) {
                 list($key) = array_keys($p);
-                $tables[] = $p[$key]; 
+                $tables[] = $p[$key];
             }
-            $this->info("List of tables: ".implode(",",$tables));
-            
+            $this->info("List of tables: " . implode(",", $tables));
+
             foreach ($tables as $t) {
                 // Ignore tables with different prefix
-                if($prefix == '' || str_contains($t, $prefix)) { 
-                    $t = strtolower(substr($t, strlen($prefix)));
-                    $toadd = ['modelname'=> str_singular($t), 'tablename'=>''];
-                    if(str_plural($toadd['modelname']) != $t) {
-                        $toadd['tablename'] = $t;
-                    } 
-                    $tocreate[] = $toadd;
+                if (!str_contains($t, "oauth_") && $t != "password_resets" && $t != "migrations" && $t != "failed_jobs") {
+                    if ($prefix == '' || str_contains($t, $prefix)) {
+                        $t = strtolower(substr($t, strlen($prefix)));
+                        $toadd = ['modelname' => str_singular($t), 'tablename' => ''];
+                        if (str_plural($toadd['modelname']) != $t) {
+                            $toadd['tablename'] = $t;
+                        }
+                        $tocreate[] = $toadd;
+                    }
                 }
             }
             // Remove options not applicabe for multiples tables
             $custom_table_name = null;
             $custom_controller = null;
             $singular = null;
-        }
-        else {
+        } else {
 
             $tocreate = [
                 'modelname' => $modelname,
                 'tablename' => '',
             ];
-            if($singular) {
-                $tocreate['tablename'] = strtolower($modelname);    
-            }
-            else if($custom_table_name) { 
-                $tocreate['tablename'] = $custom_table_name; 
+            if ($singular) {
+                $tocreate['tablename'] = strtolower($modelname);
+            } else if ($custom_table_name) {
+                $tocreate['tablename'] = $custom_table_name;
             }
 
             $tocreate = [$tocreate];
         }
-
-
 
         foreach ($tocreate as $c) {
             $generator = new \CrudGenerator\CrudGeneratorService();
@@ -109,25 +106,4 @@ class CrudGeneratorCommand extends Command
 
     }
 
-    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
