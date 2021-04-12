@@ -10,7 +10,7 @@ optimized for laravel 8
 ```
 composer require zeuz113/laravel-crud-generator
 ```
-In Laravel 6.* require helpers instalation
+In Laravel >6.* require helpers instalation
 ```
 composer require laravel/helpers
 ```
